@@ -1,21 +1,10 @@
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from app.api.v1.api import api_router
+from app.api.v1.endpoints import vaccination_history
 
-app = FastAPI(
-    title="Image Processing API",
-    description="API for processing images and extracting text",
-    version="1.0.0"
+app = FastAPI()
+
+app.include_router(
+    vaccination_history.router,
+    prefix="/api/v1/vaccination",
+    tags=["vaccination"]
 )
-
-# Configure CORS
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # In production, replace with specific origins
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-# Include API router
-app.include_router(api_router, prefix="/api/v1") 
