@@ -156,7 +156,7 @@ const AppointmentConfirmation = () => {
               {/* New Side-by-Side Layout for Appointment Info and Documents */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
                 {/* Left: Appointment Information */}
-                <Card className="shadow-md border-mov-orange/20">
+                <Card className="shadow-md border-mov-orange">
                   <CardHeader className="bg-mov-soft-gray border-b pb-4">
                     <CardTitle className="flex items-center text-xl text-mov-orange">
                       <Clock className="mr-2 h-5 w-5" /> 
@@ -284,9 +284,9 @@ const AppointmentConfirmation = () => {
                     id: "Imaging Studies"
                   }, {
                     icon: <FileText className="h-5 w-5 text-mov-orange mr-2" />,
-                    title: "Insurance Information",
-                    description: "Insurance card or coverage details",
-                    id: "Insurance Information"
+                    title: "Fitness App Imports",
+                    description: "Health data from fitness trackers and wellness apps",
+                    id: "Fitness App Imports"
                   }, {
                     icon: <FileText className="h-5 w-5 text-mov-orange mr-2" />,
                     title: "Previous Treatment Plans",
