@@ -3,7 +3,7 @@ from typing import List
 import uuid
 # from app.services.vac_mistral import call_mistral_api, VaccinationData
 from app.services.vaccination_client import call_mistral_api, Vaccinations
-from app.services.history_client import pdf_client, Vaccinations, MedicalHistory
+from app.services.history_client import pdf_client, MedicalHistory
 from pydantic import BaseModel
 
 router = APIRouter()
