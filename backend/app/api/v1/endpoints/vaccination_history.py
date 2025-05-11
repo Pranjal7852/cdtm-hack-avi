@@ -2,7 +2,7 @@ from fastapi import APIRouter, UploadFile, File, HTTPException
 from typing import List
 import uuid
 # from app.services.vac_mistral import call_mistral_api, VaccinationData
-from app.services.mistral_client import call_mistral_api, Vaccinations
+from app.services.vaccination_client import call_mistral_api, Vaccinations
 from pydantic import BaseModel
 
 router = APIRouter()
@@ -12,7 +12,7 @@ class DigitalizationResponse(BaseModel):
     certificate_id: str
     vaccinations: Vaccinations
 
-@router.post("/digitalize-certificate/", response_model=DigitalizationResponse)
+@router.post("/vaccination_certificate/", response_model=DigitalizationResponse)
 async def digitalize_certificate(file: UploadFile = File(...)):
     if not file.content_type.startswith("image/"):
         raise HTTPException(status_code=400, detail="File must be an image")
