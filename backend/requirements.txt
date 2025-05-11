@@ -4,3 +4,7 @@ python-multipart==0.0.6
 pytesseract==0.3.10
 Pillow==10.1.0
 python-dotenv==1.0.0 
+pydantic
+langchain
+langchain[openai]
+requests
