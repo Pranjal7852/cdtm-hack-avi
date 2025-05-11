@@ -1,4 +1,4 @@
-# Noboht Project
+# MOV Health (Streamline the process between Doctor and Patient )
 
 This project consists of a modern web application with a React frontend and FastAPI backend. The application uses various modern technologies and tools to provide a robust and scalable solution.
 
