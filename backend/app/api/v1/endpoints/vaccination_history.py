@@ -29,7 +29,7 @@ async def digitalize_certificate(file: UploadFile = File(...)):
     )
     return response
 
-@router.post("/medicalhistory/", response_model=MedicalHistory)
+@router.post("/pdf/", response_model=MedicalHistory)
 async def digitalize_certificate_pdf(file: UploadFile = File(...)):
     if file.content_type != "application/pdf":
         raise HTTPException(status_code=400, detail="File must be a PDF")
