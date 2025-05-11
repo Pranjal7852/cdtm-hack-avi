@@ -4,6 +4,7 @@ import uuid
 # from app.services.vac_mistral import call_mistral_api, VaccinationData
 from app.services.vaccination_client import call_mistral_api, Vaccinations
 from app.services.history_client import pdf_client, MedicalHistory
+from app.services.medication_client import medication_client, CurrentMedications
 from pydantic import BaseModel
 
 router = APIRouter()
@@ -29,11 +30,19 @@ async def digitalize_certificate(file: UploadFile = File(...)):
     )
     return response
 
-@router.post("/pdf/", response_model=MedicalHistory)
+@router.post("/medical_history/", response_model=MedicalHistory)
 async def digitalize_certificate_pdf(file: UploadFile = File(...)):
     if file.content_type != "application/pdf":
         raise HTTPException(status_code=400, detail="File must be a PDF")
     contents = await file.read()
     pdf_result = await pdf_client(contents)
     return pdf_result
+
+@router.post("/medications/", response_model=CurrentMedications)
+async def extract_current_medications(file: UploadFile = File(...)):
+    if not (file.content_type.startswith("image/") or file.content_type == "application/pdf"):
+        raise HTTPException(status_code=400, detail="File must be an image or PDF")
+    contents = await file.read()
+    medications_result = medication_client(contents)
+    return medications_result
 

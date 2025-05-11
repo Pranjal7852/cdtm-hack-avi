@@ -1,6 +1,6 @@
 import requests
 
-API_URL = "http://localhost:8000/api/v1/vaccination/digitalize-certificate/"
+API_URL = "http://localhost:8000/api/v1/upload/vaccination_certificate/"
 IMAGE_PATH = "vaccination_img/IMG_4193.jpg"
 
 def test_digitalize_certificate():
