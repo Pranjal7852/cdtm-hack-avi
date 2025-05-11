@@ -3,7 +3,7 @@ from typing import List
 import uuid
 # from app.services.vac_mistral import call_mistral_api, VaccinationData
 from app.services.vaccination_client import call_mistral_api, Vaccinations
-from app.services.history_client import pdf_client, Vaccinations
+from app.services.history_client import pdf_client, Vaccinations, MedicalHistory
 from pydantic import BaseModel
 
 router = APIRouter()
@@ -29,18 +29,11 @@ async def digitalize_certificate(file: UploadFile = File(...)):
     )
     return response
 
-@router.post("/vaccination_certificate_pdf/", response_model=DigitalizationResponse)
+@router.post("/medicalhistory/", response_model=MedicalHistory)
 async def digitalize_certificate_pdf(file: UploadFile = File(...)):
     if file.content_type != "application/pdf":
         raise HTTPException(status_code=400, detail="File must be a PDF")
-    image_id = str(uuid.uuid4())
-    certificate_id = str(uuid.uuid4())
     contents = await file.read()
     pdf_result = await pdf_client(contents)
-    response = DigitalizationResponse(
-        image_id=image_id,
-        certificate_id=certificate_id,
-        vaccinations=pdf_result
-    )
-    return response
+    return pdf_result
 

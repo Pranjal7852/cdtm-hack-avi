@@ -11,3 +11,9 @@ app.include_router(
     prefix="/api/v1/vaccination",
     tags=["vaccination"]
 )
+
+app.include_router(
+    vaccination_history.router,
+    prefix="/api/v1/medicalhistory",
+    tags=["medicalhistory"]
+)
