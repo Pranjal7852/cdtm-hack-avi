@@ -8,3 +8,5 @@ pydantic
 langchain
 langchain[openai]
 requests
+mistralai
+dotenv
